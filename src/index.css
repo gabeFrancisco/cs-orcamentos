@@ -4,3 +4,15 @@
   margin: 0;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+
+  margin: 0 auto;
+  padding: 15mm;
+
+  box-sizing: border-box;
+
+  background: white;
+}
