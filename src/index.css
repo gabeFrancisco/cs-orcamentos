@@ -31,3 +31,89 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+@layer components {
+  .card {
+    @apply border border-slate-300 rounded-sm bg-white
+  }
+
+  tr {
+    @apply text-slate-800
+  }
+
+  .btn {
+    @apply px-2 text-sm rounded-sm text-gray-700 border border-gray-300 bg-white hover:bg-indigo-100;
+  }
+
+  .btn-primary {
+    @apply px-2 text-sm text-white rounded-sm border border-blue-600 bg-blue-500 hover:bg-blue-600;
+  }
+
+  .btn-green {
+    @apply px-2 text-sm text-white rounded-sm border border-emerald-600 bg-emerald-500 hover:bg-emerald-600;
+  }
+
+  .btn-yellow {
+    @apply px-2 text-sm text-white rounded-sm border border-yellow-600 bg-yellow-500 hover:bg-yellow-600;
+  }
+
+  .btn-red {
+    @apply px-2 text-sm text-white rounded-sm border border-red-600 bg-red-500 hover:bg-red-600;
+  }
+
+  .btn-orange {
+    @apply px-2 text-sm text-white rounded-sm border border-orange-600 bg-orange-500 hover:bg-orange-600;
+  }
+
+  .btn-primary-i {
+    @apply px-2 text-xl text-blue-500 hover:bg-blue-500 hover:text-white rounded-sm;
+  }
+
+  .btn-green-i {
+    @apply px-2 text-xl text-emerald-500 hover:bg-emerald-500 hover:text-white rounded-sm;
+  }
+
+  .btn-yellow-i {
+    @apply px-2 text-xl text-white bg-yellow-500 rounded-sm border border-yellow-400 shadow-yellow-300 hover:bg-yellow-600;
+  }
+
+  .btn-red-i {
+    @apply px-2 text-xl text-red-500 hover:bg-red-500 hover:text-white rounded-sm;
+  }
+
+  .txt-input {
+    @apply w-full px-1 py-0.5 transition-all bg-white border border-slate-300 rounded-sm;
+  }
+
+  .txt-label {
+    @apply absolute z-10 px-1 ml-3 -mt-2 text-sm transition-all bg-white rounded;
+  }
+
+  .data-blue {
+    @apply transition ease-in-out shadow rounded border-2 border-blue-500 text-blue-500 bg-blue-50 hover:-translate-y-1
+  }
+
+  .data-green {
+    @apply transition ease-in-out shadow rounded border-2 border-green-500 text-green-500 bg-green-50 hover:-translate-y-1
+  }
+
+  .data-yellow {
+    @apply transition ease-in-out shadow rounded border-2 border-yellow-500 text-yellow-500 bg-yellow-50 hover:-translate-y-1
+  }
+
+  .data-red {
+    @apply transition ease-in-out shadow rounded border-2 border-red-500 text-red-500 bg-red-50 hover:-translate-y-1
+  }
+
+  .form-section {
+    @apply p-3 border rounded shadow-none border-gray-300;
+  }
+
+  .form-label {
+    @apply absolute z-10 px-1 ml-3 -mt-2 text-sm bg-gray-50 rounded;
+  }
+
+  .form-btn {
+    @apply w-full mt-2 py-2 px-4;
+  }
+}
