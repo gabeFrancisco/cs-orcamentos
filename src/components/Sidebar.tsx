@@ -1,7 +1,7 @@
 function Sidebar() {
     return (
         <div className="w-1/2 flex flex-col bg-white text-zinc-700 rounded shadow-lg shadow-zinc-400">
-            <div className="p-3 bg-blue-500 border-b text-white text-center border-zinc-300 shadow-lg w-full rounded-tl rounded-tr">
+            <div className="p-3 bg-zinc-800 border-b text-white text-center border-zinc-300 shadow-lg w-full rounded-tl rounded-tr">
                 Gerenciador de Orçamentos
             </div>
             <div className="p-4 flex flex-col items-start">
