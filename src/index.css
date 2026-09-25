@@ -5,16 +5,11 @@
   font-family: "Open Sans", sans-serif;
 }
 
-input,
-textarea,
-select {
-  border-radius: 3px;
-  /* padding: 0.1rem 0.2rem; */
-}
 
 .page {
   width: 210mm;
   min-height: 297mm;
+  /* transform: scale(0.5); */
 }
 
 /* width */
@@ -89,7 +84,7 @@ select {
   }
 
   .txt-input {
-    @apply w-full px-1 py-1 transition-all bg-white border border-slate-300 rounded-sm;
+    @apply shadow w-full px-1 py-1 transition-all bg-white border border-slate-300 rounded;
   }
 
   .txt-label {

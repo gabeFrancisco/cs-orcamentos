@@ -1,3 +1,5 @@
+import ItemCard from "./ItemCard";
+
 function Sidebar() {
     return (
         <div className="lg:w-3/5 2xl:w-1/3 flex flex-col bg-white text-zinc-700 rounded shadow-lg shadow-zinc-400">
@@ -16,7 +18,15 @@ function Sidebar() {
                 <div className="mt-5">
                     <label className="form-label">Itens</label>
                     <div className="form-section">
-                        <div className="mt-3">
+                        {/* Lista de items */}
+                        <div>
+                            <ItemCard />
+                            <ItemCard />
+                            <ItemCard />
+                        </div>
+                        {/* ======================================== */}
+                        <hr className="text-gray-200 mt-2" />
+                        <div className="mt-5">
                             <label htmlFor="nome" className="txt-label">Nome</label>
                             <input type="text" name="nome" className="txt-input" />
                         </div>

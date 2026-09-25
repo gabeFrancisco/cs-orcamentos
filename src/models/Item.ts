@@ -5,5 +5,5 @@ export interface Item extends Entidade {
     quantidade: number,
     preco: number,
     total: number,
-    id_orcamento: string
+    id_orcamento?: string
 }
