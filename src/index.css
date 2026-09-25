@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
+
 * {
-  margin: 0;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Open Sans", sans-serif;
+}
+
+input,
+textarea,
+select {
+  border-radius: 3px;
+  /* padding: 0.1rem 0.2rem; */
 }
 
 .page {
@@ -82,11 +89,11 @@
   }
 
   .txt-input {
-    @apply w-full px-1 py-0.5 transition-all bg-white border border-slate-300 rounded-sm;
+    @apply w-full px-1 py-1 transition-all bg-white border border-slate-300 rounded-sm;
   }
 
   .txt-label {
-    @apply absolute z-10 px-1 ml-3 -mt-2 text-sm transition-all bg-white rounded;
+    @apply absolute z-10 px-1 ml-3 -mt-3 text-sm transition-all bg-white rounded-lg;
   }
 
   .data-blue {
@@ -110,7 +117,7 @@
   }
 
   .form-label {
-    @apply absolute z-10 px-1 ml-3 -mt-2 text-sm bg-gray-50 rounded;
+    @apply absolute z-10 px-1 ml-3 -mt-3 text-sm bg-gray-50 rounded-lg;
   }
 
   .form-btn {
