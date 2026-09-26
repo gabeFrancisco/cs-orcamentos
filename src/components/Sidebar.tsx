@@ -2,7 +2,7 @@ import ItemCard from "./ItemCard";
 
 function Sidebar() {
     return (
-        <div className="lg:w-3/5 2xl:w-1/3 flex flex-col bg-white text-zinc-700 rounded shadow-lg shadow-zinc-400">
+        <div className="lg:w-3/5 2xl:w-1/3 flex m-3 flex-col bg-white text-zinc-700 rounded shadow-lg shadow-zinc-400">
             <div className="p-3 bg-zinc-800 border-b text-white text-center border-zinc-300 shadow-lg w-full rounded-tl rounded-tr">
                 Gerenciador de Orçamentos
             </div>

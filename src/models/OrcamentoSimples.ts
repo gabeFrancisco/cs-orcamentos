@@ -3,7 +3,7 @@ import type { Item } from "./Item";
 
 export interface OrcamentoSimples extends Entidade {
     destinatario: string,
-    item: Item,
+    items: Item[],
     total: number,
     observacao: string,
     validade: number,
