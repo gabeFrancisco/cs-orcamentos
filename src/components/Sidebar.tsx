@@ -32,7 +32,7 @@ function Sidebar() {
                         </div>
 
 
-                        <div className="mt-3 flex flex-row justify-between">
+                        <div className="mt-5 flex flex-row justify-between">
                             <div>
                                 <label htmlFor="quantidade" className="txt-label">Qte.</label>
                                 <input type="number" name="quantidade" className="txt-input" />
