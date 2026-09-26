@@ -1,7 +1,9 @@
+import useAppStore from "../store/store";
 import ItemCard from "./ItemCard";
 import ItemForm from "./ItemForm";
 
 function Sidebar() {
+    const items = useAppStore((state) => state.orcamentoSimplesAtual?.items) ?? null;
     return (
         <div className="lg:w-3/5 2xl:w-1/3 flex m-3 flex-col bg-white text-zinc-700 rounded shadow-lg shadow-zinc-400">
             <div className="p-3 bg-zinc-800 border-b text-white text-center border-zinc-300 shadow-lg w-full rounded-tl rounded-tr">
@@ -21,9 +23,9 @@ function Sidebar() {
                     <div className="form-section">
                         {/* Lista de items */}
                         <div>
-                            <ItemCard />
-                            <ItemCard />
-                            <ItemCard />
+                            {items?.map((el, index) => (
+                                <ItemCard key={index} nome={el.nome} quantidade={el.quantidade} preco={el.preco} total={el.total} />
+                            ))}
                         </div>
                         {/* ======================================== */}
                         <hr className="text-gray-200 mt-2" />

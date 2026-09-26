@@ -11,7 +11,7 @@ type Action = {
     addItem: (item: Item) => void;
 }
 
-const useStore = create<State & Action>()((set) => ({
+const useAppStore = create<State & Action>()((set) => ({
     orcamentoSimplesAtual: null,
     orcamentosSimples: [],
     addItem: (item) => set((state) => {
@@ -31,4 +31,4 @@ const useStore = create<State & Action>()((set) => ({
     })
 }))
 
-export default useStore;
+export default useAppStore;
