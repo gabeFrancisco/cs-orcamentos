@@ -30,3 +30,5 @@ const useStore = create<State & Action>()((set) => ({
         }
     })
 }))
+
+export default useStore;
