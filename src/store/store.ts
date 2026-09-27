@@ -12,12 +12,20 @@ type Action = {
 }
 
 const useAppStore = create<State & Action>()((set) => ({
-    orcamentoSimplesAtual: null,
+    orcamentoSimplesAtual: {
+        destinatario: '',
+        items: [],
+        total: 0,
+        observacao: '',
+        validade: 0,
+        data: new Date(),
+        local: '',
+    },
     orcamentosSimples: [],
     addItem: (item) => set((state) => {
-        if (!state.orcamentoSimplesAtual) {
-            return state;
-        }
+        // if (!state.orcamentoSimplesAtual) {
+        //     return state;
+        // }
 
         return {
             orcamentoSimplesAtual: {

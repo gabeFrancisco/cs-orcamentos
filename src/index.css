@@ -92,7 +92,7 @@ body {
   }
 
   .txt-label {
-    @apply absolute z-10 px-1 ml-3 -mt-3 text-sm transition-all bg-white rounded-lg;
+    @apply absolute z-10 px-1 ml-3 -mt-3 text-sm transition-all bg-white rounded-xl;
   }
 
   .data-blue {
@@ -116,7 +116,7 @@ body {
   }
 
   .form-label {
-    @apply absolute z-10 px-1 ml-3 -mt-3 text-sm bg-gray-50 rounded-lg;
+    @apply absolute z-10 px-1 ml-3 -mt-3 text-sm bg-white rounded-xl;
   }
 
   .form-btn {
