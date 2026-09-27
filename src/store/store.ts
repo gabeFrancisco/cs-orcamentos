@@ -8,7 +8,8 @@ type State = {
 }
 
 type Action = {
-    addItem: (item: Item) => void;
+    addItem: (item: Item) => void
+    removeItem: (index: number) => void
 }
 
 const useAppStore = create<State & Action>()((set) => ({
@@ -34,6 +35,15 @@ const useAppStore = create<State & Action>()((set) => ({
                     ...state.orcamentoSimplesAtual.items,
                     item
                 ]
+            }
+        }
+    }),
+    removeItem: (index) => set((state) => {
+        const items = state.orcamentoSimplesAtual.items.filter(item => item.posicao !== index)
+        return {
+            orcamentoSimplesAtual: {
+                ...state.orcamentoSimplesAtual,
+                items: items
             }
         }
     })

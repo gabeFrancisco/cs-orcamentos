@@ -30,6 +30,7 @@ function ItemForm() {
             };
 
             addItem(item);
+            formik.resetForm();
         }
     })
 
@@ -41,7 +42,7 @@ function ItemForm() {
 
     return (
         <form onSubmit={formik.handleSubmit}>
-            <div className="mt-5">
+            <div className="mt-3">
                 <label htmlFor="nome" className="txt-label">Nome</label>
                 <input style={formik.errors.nome && style} onChange={formik.handleChange} value={formik.values.nome} type="text" name="nome" className="txt-input" />
             </div>

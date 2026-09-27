@@ -5,7 +5,7 @@ import ItemForm from "./ItemForm";
 function Sidebar() {
     const items = useAppStore((state) => state.orcamentoSimplesAtual?.items) ?? [];
     return (
-        <div className="lg:w-3/5 2xl:w-1/3 flex m-3 flex-col bg-white text-zinc-700 rounded shadow-lg shadow-zinc-400">
+        <div className="lg:w-3/5 2xl:w-1/3 max-h-dvh flex m-3 flex-col bg-white text-zinc-700 rounded shadow-lg shadow-zinc-400">
             <div className="p-3 bg-zinc-800 border-b text-white text-center border-zinc-300 shadow-lg w-full rounded-tl rounded-tr">
                 Gerenciador de Orçamentos
             </div>
@@ -22,7 +22,7 @@ function Sidebar() {
                     <label className="form-label">Itens</label>
                     <div className="form-section">
                         {/* Lista de items */}
-                        <div className="overflow-y-scroll h-1/4">
+                        <div className="overflow-y-auto max-h-64">
                             {items.map((el, index) => (
                                 <ItemCard
                                     key={index}
@@ -33,8 +33,8 @@ function Sidebar() {
                                     total={el.total} />
                             ))}
                         </div>
+                        {items.length >= 1 && <hr className="text-gray-200 mt-2" />}
                         {/* ======================================== */}
-                        <hr className="text-gray-200 mt-2" />
                         <ItemForm />
                     </div>
                 </div>
