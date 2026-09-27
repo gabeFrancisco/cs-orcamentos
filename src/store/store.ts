@@ -9,7 +9,8 @@ type State = {
 
 type Action = {
     addItem: (item: Item) => void
-    removeItem: (index: number) => void
+    removeItem: (index: number) => void,
+    setDestinatario: (destinatario: string) => void
 }
 
 const useAppStore = create<State & Action>()((set) => ({
@@ -44,6 +45,14 @@ const useAppStore = create<State & Action>()((set) => ({
             orcamentoSimplesAtual: {
                 ...state.orcamentoSimplesAtual,
                 items: items
+            }
+        }
+    }),
+    setDestinatario: (destinatario) => set((state) => {
+        return {
+            orcamentoSimplesAtual: {
+                ...state.orcamentoSimplesAtual,
+                destinatario: destinatario
             }
         }
     })

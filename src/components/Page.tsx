@@ -19,9 +19,13 @@ function Page() {
                 </div>
             </div>
             <Subtitle text='Orçamento' />
-            <div className='p-6 '>
+            <div className='py-6 px-10 '>
 
-                <span className='font-bold'>{orcamentoAtual.destinatario}</span>
+                <div className='font-bold mb-2 text-lg'>
+                    {orcamentoAtual.destinatario.length === 0 ? "Destinatário" : orcamentoAtual.destinatario}
+                </div>
+                <hr className='text-zinc-500 mb-4' />
+
                 <div>
                     <PageItensTable />
                 </div>
