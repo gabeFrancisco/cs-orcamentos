@@ -43,10 +43,6 @@ body {
     @apply border border-slate-300 rounded-sm bg-white
   }
 
-  tr {
-    @apply text-slate-800
-  }
-
   .btn {
     @apply px-2 py-2 text-sm rounded-sm text-gray-700 border border-gray-300 bg-white hover:bg-indigo-100;
   }
