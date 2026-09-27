@@ -1,59 +1,60 @@
-import { useEffect, useState } from 'react';
-import { useForm, useWatch } from 'react-hook-form'
 import useAppStore from '../store/store';
 import type { Item } from '../models/Item';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-
-
-interface FormData {
-    nome: string,
-    quantidade: number,
-    preco: number
-}
+import { useFormik } from 'formik'
+import * as Yup from 'yup';
 
 function ItemForm() {
-    const { register, handleSubmit, control } = useForm<FormData>();
-
-    register('quantidade', { valueAsNumber: true, value: 0 });
-    register('preco', { valueAsNumber: true, value: 0 });
-
-    const quantidade = useWatch({ control, name: 'quantidade' })
-    const preco = useWatch({ control, name: 'preco' })
-
-    const total = quantidade * preco;
-
     const addItem = useAppStore((state) => state.addItem);
     const totalItems = useAppStore((state) => state.orcamentoSimplesAtual.items.length)
+    const formik = useFormik({
+        initialValues: {
+            nome: "",
+            posicao: 0,
+            quantidade: 0,
+            preco: 0
+        },
+        validationSchema: Yup.object({
+            nome: Yup.string().required("Nome é obrigatório"),
+            quantidade: Yup.number().min(1).required("Quantidade é obrigatório!"),
+            preco: Yup.number().min(1).required("Preço é obrigatório")
+        }),
+        onSubmit: (values) => {
+            const item: Item = {
+                nome: values.nome,
+                quantidade: values.quantidade,
+                preco: values.preco,
+                total: total,
+                posicao: totalItems + 1
+            };
 
-    function onSubmit(data: FormData) {
-        const item: Item = {
-            nome: data.nome,
-            quantidade: data.quantidade,
-            preco: data.preco,
-            total: total,
-            posicao: totalItems + 1
-        };
+            addItem(item);
+        }
+    })
 
-        addItem(item);
+    const style: React.CSSProperties = {
+        borderColor: '#fb2c36'
     }
 
+    const total = formik.values.quantidade * formik.values.preco;
+
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={formik.handleSubmit}>
             <div className="mt-5">
                 <label htmlFor="nome" className="txt-label">Nome</label>
-                <input {...register('nome')} type="text" name="nome" className="txt-input" />
+                <input style={formik.errors.nome && style} onChange={formik.handleChange} value={formik.values.nome} type="text" name="nome" className="txt-input" />
             </div>
 
 
             <div className="mt-5 flex flex-row ">
                 <div>
                     <label htmlFor="quantidade" className="txt-label">Qte.</label>
-                    <input {...register('quantidade')} type="number" name="quantidade" className="txt-input" />
+                    <input style={formik.errors.quantidade && style} type="number" onChange={formik.handleChange} value={formik.values.quantidade} name="quantidade" className="txt-input" />
                 </div>
                 <div className="ml-3">
                     <label htmlFor="preco" className="txt-label">Preço</label>
-                    <input {...register('preco')} type="number" name="preco" className="txt-input" />
+                    <input style={formik.errors.preco && style} type="number" name="preco" onChange={formik.handleChange} value={formik.values.preco} className="txt-input" />
                 </div>
                 <div className="ml-3 flex-col w-1/2 items-center">
                     <div className="text-emerald-600 border rounded border-emerald-600 flex flex-row items-center">

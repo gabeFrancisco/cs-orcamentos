@@ -22,7 +22,7 @@ function Sidebar() {
                     <label className="form-label">Itens</label>
                     <div className="form-section">
                         {/* Lista de items */}
-                        <div>
+                        <div className="overflow-y-scroll h-1/4">
                             {items.map((el, index) => (
                                 <ItemCard
                                     key={index}
