@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag, faTag, faDollarSign, faTrash } from '@fortawesome/free-solid-svg-icons';
+import useAppStore from '../store/store';
 
 interface ItemCardProps {
     posicao?: number,
@@ -10,6 +11,12 @@ interface ItemCardProps {
 }
 
 function ItemCard(props: ItemCardProps) {
+    const removeItem = useAppStore(state => state.removeItem);
+
+    function handleRemoveItem() {
+        removeItem(props.posicao);
+    }
+
     return (
         <div className="bg-gray-50 text-sm hover:bg-sky-100 cursor-pointer flex items-center shadow border border-zinc-300 rounded p-2 w-full my-2">
             <span className='font-bold mx-1'>{props.posicao}</span>
@@ -32,7 +39,7 @@ function ItemCard(props: ItemCardProps) {
                 <FontAwesomeIcon className='text-emerald-700' icon={faDollarSign} />
                 <span className=" text-emerald-700 shrink-0">R${props.preco.toFixed(2)}</span>
             </div>
-            <button className='btn-red p-1 mr-1 cursor-pointer'><FontAwesomeIcon icon={faTrash} /></button>
+            <button onClick={handleRemoveItem} className='btn-red p-1 mr-1 cursor-pointer'><FontAwesomeIcon icon={faTrash} /></button>
         </div>
     );
 }
