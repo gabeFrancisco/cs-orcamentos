@@ -1,16 +1,19 @@
 import { create } from 'zustand';
 import type { OrcamentoSimples } from '../models/OrcamentoSimples';
 import type { Item } from '../models/Item';
+import type { Configuracoes } from '../models/Configuracoes';
 
 type State = {
     orcamentoSimplesAtual: OrcamentoSimples | null,
-    orcamentosSimples: OrcamentoSimples[]
+    orcamentosSimples: OrcamentoSimples[],
+    configuracoes: Configuracoes
 }
 
 type Action = {
     addItem: (item: Item) => void
     removeItem: (index: number) => void,
-    setDestinatario: (destinatario: string) => void
+    setDestinatario: (destinatario: string) => void,
+    setConfiguracoes: (config: Configuracoes) => void
 }
 
 const useAppStore = create<State & Action>()((set) => ({
@@ -24,6 +27,10 @@ const useAppStore = create<State & Action>()((set) => ({
         local: '',
     },
     orcamentosSimples: [],
+    configuracoes: {
+        validadePadrao: 30,
+        prefixoDestinatario: '',
+    },
     addItem: (item) => set((state) => {
         // if (!state.orcamentoSimplesAtual) {
         //     return state;
@@ -54,6 +61,11 @@ const useAppStore = create<State & Action>()((set) => ({
                 ...state.orcamentoSimplesAtual,
                 destinatario: destinatario
             }
+        }
+    }),
+    setConfiguracoes: (config) => set(() => {
+        return {
+            configuracoes: config
         }
     })
 }))
