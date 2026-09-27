@@ -13,8 +13,8 @@ function Sidebar() {
 
                 <div className="flex flex-col items-start mt-1">
                     <div className="w-full mt-3">
-                        <label htmlFor="remetente" className="txt-label">Remetente</label>
-                        <input name="remetente" type="text" className="txt-input" />
+                        <label htmlFor="destinatario" className="txt-label">Destinatário</label>
+                        <input name="destinatario" type="text" className="txt-input" />
                     </div>
                 </div>
 

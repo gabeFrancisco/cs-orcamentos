@@ -1,7 +1,10 @@
 import Logo from '../../public/logo.svg'
+import useAppStore from '../store/store';
+import PageItensTable from './PageItensTable';
 import Subtitle from './Subtitle';
 
 function Page() {
+    const orcamentoAtual = useAppStore((state) => state.orcamentoSimplesAtual)
     return (
         <div className="bg-white shadow-lg shadow-zinc-400 rounded page">
             <div className='flex flex-row p-10 justify-between w-full'>
@@ -16,6 +19,13 @@ function Page() {
                 </div>
             </div>
             <Subtitle text='Orçamento' />
+            <div className='p-6 '>
+
+                <span className='font-bold'>{orcamentoAtual.destinatario}</span>
+                <div>
+                    <PageItensTable />
+                </div>
+            </div>
         </div>
     );
 }
