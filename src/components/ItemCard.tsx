@@ -37,7 +37,7 @@ function ItemCard(props: ItemCardProps) {
 
             <div className='p-1 bg-emerald-100 border border-emerald-300 rounded mr-1'>
                 <FontAwesomeIcon className='text-emerald-700' icon={faDollarSign} />
-                <span className=" text-emerald-700 shrink-0">R${props.preco.toFixed(2)}</span>
+                <span className=" text-emerald-700 shrink-0">R${props.total.toFixed(2)}</span>
             </div>
             <button onClick={handleRemoveItem} className='btn-red p-1 mr-1 cursor-pointer'><FontAwesomeIcon icon={faTrash} /></button>
         </div>

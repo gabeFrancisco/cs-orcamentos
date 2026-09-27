@@ -8,6 +8,7 @@ import * as Yup from 'yup';
 function ItemForm() {
     const addItem = useAppStore((state) => state.addItem);
     const totalItems = useAppStore((state) => state.orcamentoSimplesAtual.items.length)
+
     const formik = useFormik({
         initialValues: {
             nome: "",
@@ -25,7 +26,7 @@ function ItemForm() {
                 nome: values.nome,
                 quantidade: values.quantidade,
                 preco: values.preco,
-                total: total,
+                total: values.quantidade * values.preco,
                 posicao: totalItems + 1
             };
 
@@ -34,11 +35,10 @@ function ItemForm() {
         }
     })
 
+    const total = formik.values.quantidade * formik.values.preco;
     const style: React.CSSProperties = {
         borderColor: '#fb2c36'
     }
-
-    const total = formik.values.quantidade * formik.values.preco;
 
     return (
         <form onSubmit={formik.handleSubmit}>
