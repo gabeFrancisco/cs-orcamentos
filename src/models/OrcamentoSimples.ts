@@ -7,6 +7,7 @@ export interface OrcamentoSimples extends Entidade {
     total: number,
     observacoes: string,
     validade: number,
-    data: Date,
-    local: string
+    data: string,
+    local: string,
+    responsavel: string
 }

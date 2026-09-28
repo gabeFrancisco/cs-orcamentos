@@ -53,7 +53,7 @@ function Page() {
                     {/* <Subtitle text='Informações adicionais' /> */}
                     <div className='mt-5 pb-12 px-10 text-zinc-800'>
                         <p className=''>Orçamento válido por {config.validadePadrao} dias!</p>
-                        <p className='italic font-bold'>Porto Alegre, 26/09/2026</p>
+                        <p className='italic font-bold'>Porto Alegre, {new Date(orcamentoAtual.data).toLocaleDateString("pt-BR")}</p>
                     </div>
                 </div>
             </div>

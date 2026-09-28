@@ -7,6 +7,7 @@ import { faGear, faList } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import ConfigModal from "./ConfigModal";
 import ObservacoesInput from "./ObservacoesInput";
+import DataInput from "./DataInput";
 
 function Sidebar() {
     const items = useAppStore((state) => state.orcamentoSimplesAtual?.items) ?? [];
@@ -59,7 +60,9 @@ function Sidebar() {
                             </div>
                         </div>
                     </div>
-
+                    <div className="flex flex-row items-baseline mt-4">
+                        <DataInput />
+                    </div>
 
                     {/* Itens */}
                     <div className="mt-5 flex-1 min-h-0 flex flex-col">

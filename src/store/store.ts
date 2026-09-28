@@ -14,6 +14,9 @@ type Action = {
     removeItem: (index: number) => void,
     setDestinatario: (destinatario: string) => void,
     setObservacoes: (observacoes: string) => void,
+    setLocal: (local: string) => void,
+    setData: (data: string) => void,
+    setResponsavel: (responsavel: string) => void,
     setConfiguracoes: (config: Configuracoes) => void
 }
 
@@ -24,8 +27,10 @@ const useAppStore = create<State & Action>()((set) => ({
         total: 0,
         observacoes: '',
         validade: 0,
-        data: new Date(),
+        data: "",
         local: '',
+        responsavel: '',
+
     },
     orcamentosSimples: [],
     configuracoes: {
@@ -69,6 +74,30 @@ const useAppStore = create<State & Action>()((set) => ({
             orcamentoSimplesAtual: {
                 ...state.orcamentoSimplesAtual,
                 observacoes: observacoes
+            }
+        }
+    }),
+    setLocal: (local) => set((state) => {
+        return {
+            orcamentoSimplesAtual: {
+                ...state.orcamentoSimplesAtual,
+                local: local
+            }
+        }
+    }),
+    setData: (data) => set((state) => {
+        return {
+            orcamentoSimplesAtual: {
+                ...state.orcamentoSimplesAtual,
+                data: data
+            }
+        }
+    }),
+    setResponsavel: (responsavel) => set((state) => {
+        return {
+            orcamentoSimplesAtual: {
+                ...state.orcamentoSimplesAtual,
+                responsavel: responsavel
             }
         }
     }),
