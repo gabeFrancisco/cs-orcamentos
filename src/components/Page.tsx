@@ -6,6 +6,7 @@ import Subtitle from './Subtitle';
 function Page() {
     const orcamentoAtual = useAppStore((state) => state.orcamentoSimplesAtual)
     const config = useAppStore((state) => state.configuracoes)
+    const total = orcamentoAtual.items.reduce((soma, item) => soma + item.total, 0)
 
     return (
         <div className="bg-white shadow-lg shadow-zinc-400 rounded page">
@@ -22,8 +23,8 @@ function Page() {
             </div>
             <Subtitle text='Orçamento' />
             <div className=' flex flex-col justify-between grow'>
-                <div>
-                    <div className='py-6 px-10'>
+                <div className='flex flex-col justify-between grow'>
+                    <div className='py-6 px-10 '>
                         <div className='font-bold mb-2 text-lg'>
                             {config.prefixoDestinatario} {orcamentoAtual.destinatario.length === 0
                                 ? <span className='text-zinc-500'>Destinatário</span>
@@ -37,16 +38,19 @@ function Page() {
 
                     </div>
 
+                    <div className='className="w-full my-4 border-t text-end text-zinc-900 text-lg border-zinc-500 border-b bg-zinc-200 px-10 py-0.5 font-bold'>
+                        TOTAL: R${total.toFixed(2)}
+                    </div>
                 </div>
                 {orcamentoAtual.observacao.length > 0 && (
                     <Subtitle text='Observações' />
 
                 )}
                 <div>
-                    <Subtitle text='Informações adicionais' />
+                    {/* <Subtitle text='Informações adicionais' /> */}
                     <div className='mt-5 pb-12 px-10 text-zinc-800'>
                         <p className=''>Orçamento válido por {config.validadePadrao} dias!</p>
-                        <p className=''>Porto Alegre, 26/09/2026</p>
+                        <p className='italic font-bold'>Porto Alegre, 26/09/2026</p>
                     </div>
                 </div>
             </div>
