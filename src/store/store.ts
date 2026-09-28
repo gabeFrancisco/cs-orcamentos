@@ -28,8 +28,8 @@ const useAppStore = create<State & Action>()((set) => ({
         observacoes: '',
         validade: 0,
         data: "",
-        local: '',
-        responsavel: '',
+        local: 'São Francisco de Paula',
+        responsavel: 'Gabriel',
 
     },
     orcamentosSimples: [],

@@ -16,7 +16,7 @@ function Page() {
 
     return (
         <div className="bg-white shadow-lg shadow-zinc-400 rounded page">
-            <div className='flex flex-row p-10 justify-between w-full'>
+            <div className='flex flex-row px-10 py-5 justify-between w-full'>
                 <img src={Logo} className='w-1/3 text-black' />
                 <div className='flex flex-col items-center text-sm'>
                     <p><b>Confiança - Qualidade - Garantia</b></p>
@@ -31,12 +31,12 @@ function Page() {
             <div className=' flex flex-col justify-between grow'>
                 <div className='flex flex-col justify-between grow'>
                     <div className='py-6 px-10 grow'>
-                        <div className='font-bold mb-2 text-lg'>
+                        <div className='font-bold mt-1 mb-2 text-lg'>
                             {config.prefixoDestinatario} {orcamentoAtual.destinatario.length === 0
                                 ? <span className='text-zinc-500'>Destinatário</span>
                                 : orcamentoAtual.destinatario}
                         </div>
-                        <hr className='text-zinc-500 mb-4' />
+                        <hr className='text-zinc-500 mb-7' />
 
                         <div>
                             <PageItensTable />

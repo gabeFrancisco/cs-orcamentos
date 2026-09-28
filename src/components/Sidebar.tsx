@@ -3,11 +3,13 @@ import useAppStore from "../store/store";
 import DestinatarioInput from "./DestinatarioInput";
 import ItemCard from "./ItemCard";
 import ItemForm from "./ItemForm";
-import { faGear, faList } from "@fortawesome/free-solid-svg-icons";
+import { faFilePdf, faGear, faList, faPrint } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import ConfigModal from "./ConfigModal";
 import ObservacoesInput from "./ObservacoesInput";
 import DataInput from "./DataInput";
+import ResponsavelInput from "./ResponsavelInput";
+import LocalInput from "./LocalInput";
 
 function Sidebar() {
     const items = useAppStore((state) => state.orcamentoSimplesAtual?.items) ?? [];
@@ -44,6 +46,20 @@ function Sidebar() {
                                 icon={faGear}
                             />
                         </button>
+                        <button type="button">
+                            <FontAwesomeIcon
+                                onClick={() => setConfigModal(true)}
+                                className="rounded cursor-pointer p-1 hover:bg-white hover:text-zinc-800"
+                                icon={faFilePdf}
+                            />
+                        </button>
+                        <button type="button">
+                            <FontAwesomeIcon
+                                onClick={() => setConfigModal(true)}
+                                className="rounded cursor-pointer p-1 hover:bg-white hover:text-zinc-800"
+                                icon={faPrint}
+                            />
+                        </button>
                     </div>
                 </div>
 
@@ -61,7 +77,15 @@ function Sidebar() {
                         </div>
                     </div>
                     <div className="flex flex-row items-baseline mt-4">
-                        <DataInput />
+                        <div>
+                            <DataInput />
+                        </div>
+                        <div className="ml-2">
+                            <LocalInput />
+                        </div>
+                        <div className="ml-2">
+                            <ResponsavelInput />
+                        </div>
                     </div>
 
                     {/* Itens */}

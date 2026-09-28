@@ -58,7 +58,7 @@ function ItemForm() {
                     <input style={formik.errors.preco && style} type="number" name="preco" onChange={formik.handleChange} value={formik.values.preco} className="txt-input" />
                 </div>
                 <div className="ml-3 flex-col w-1/2 items-center">
-                    <label className='txt-label'>Total</label>
+                    <label className='txt-label text-emerald-700'>Total</label>
                     <div className="txt-input text-emerald-700 flex flex-row items-center">
                         <span className="mx-1">R$ </span>
                         <div className="">{total.toFixed(2)}</div>
