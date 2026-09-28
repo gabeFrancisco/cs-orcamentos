@@ -5,6 +5,8 @@ import Subtitle from './Subtitle';
 
 function Page() {
     const orcamentoAtual = useAppStore((state) => state.orcamentoSimplesAtual)
+    const config = useAppStore((state) => state.configuracoes)
+
     return (
         <div className="bg-white shadow-lg shadow-zinc-400 rounded page">
             <div className='flex flex-row p-10 justify-between w-full'>
@@ -19,15 +21,33 @@ function Page() {
                 </div>
             </div>
             <Subtitle text='Orçamento' />
-            <div className='py-6 px-10 '>
-
-                <div className='font-bold mb-2 text-lg'>
-                    {orcamentoAtual.destinatario.length === 0 ? "Destinatário" : orcamentoAtual.destinatario}
-                </div>
-                <hr className='text-zinc-500 mb-4' />
-
+            <div className=' flex flex-col justify-between grow'>
                 <div>
-                    <PageItensTable />
+                    <div className='py-6 px-10'>
+                        <div className='font-bold mb-2 text-lg'>
+                            {config.prefixoDestinatario} {orcamentoAtual.destinatario.length === 0
+                                ? <span className='text-zinc-500'>Destinatário</span>
+                                : orcamentoAtual.destinatario}
+                        </div>
+                        <hr className='text-zinc-500 mb-4' />
+
+                        <div>
+                            <PageItensTable />
+                        </div>
+
+                    </div>
+
+                </div>
+                {orcamentoAtual.observacao.length > 0 && (
+                    <Subtitle text='Observações' />
+
+                )}
+                <div>
+                    <Subtitle text='Informações adicionais' />
+                    <div className='mt-5 pb-12 px-10 text-zinc-800'>
+                        <p className=''>Orçamento válido por {config.validadePadrao} dias!</p>
+                        <p className=''>Porto Alegre, 26/09/2026</p>
+                    </div>
                 </div>
             </div>
         </div>

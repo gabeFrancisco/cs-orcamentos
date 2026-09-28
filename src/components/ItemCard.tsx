@@ -18,10 +18,10 @@ function ItemCard(props: ItemCardProps) {
     }
 
     return (
-        <div className="bg-gray-50 text-sm hover:bg-sky-100 cursor-pointer flex items-center shadow border border-zinc-300 rounded p-2 w-full my-2">
+        <div className="bg-gray-50 text-sm hover:bg-sky-100 cursor-pointer flex items-center shadow border border-zinc-300 rounded p-2 my-2">
             <span className='font-bold mx-1'>{props.posicao}</span>
             {/* <input type="checkbox" name="isVisible" id="isVisible" className="shrink-0" /> */}
-            <span className="mx-1 truncate min-w-0 flex-1">
+            <span className="mx-1 min-w-0 flex-1 truncate">
                 {props.nome}
             </span>
 

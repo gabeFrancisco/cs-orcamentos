@@ -18,13 +18,13 @@ function ConfigModal(props: ConfigModalProps) {
             validadePadrao: config.validadePadrao,
             prefixoDestinatario: config.prefixoDestinatario
         },
+        enableReinitialize: true,
         onSubmit: (values) => {
-
-            formik.resetForm();
             setConfig({
                 validadePadrao: values.validadePadrao,
                 prefixoDestinatario: values.prefixoDestinatario
             })
+            // formik.resetForm();
             props.onClose()
         }
     });

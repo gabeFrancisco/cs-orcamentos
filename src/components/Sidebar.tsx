@@ -14,7 +14,7 @@ function Sidebar() {
     return (
         <>
             <ConfigModal open={configModal} onClose={() => setConfigModal(false)} />
-            <div className="lg:w-3/5 2xl:w-1/3 max-h-dvh flex m-3 flex-col bg-white text-zinc-700 rounded shadow-lg shadow-zinc-400">
+            <div className="lg:w-3/5 2xl:w-1/3 min-w-0 max-h-dvh flex m-3 flex-col bg-white text-zinc-700 rounded shadow-lg shadow-zinc-400">
                 <div className="p-2 bg-zinc-800 border-b flex flex-row justify-between items-center text-white text-center border-zinc-300 shadow w-full rounded-tl rounded-tr">
                     <span className="grow"> Gerenciador de Orçamentos</span>
                     <button type="button">
