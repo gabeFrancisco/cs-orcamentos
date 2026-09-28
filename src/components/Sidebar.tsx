@@ -3,13 +3,16 @@ import useAppStore from "../store/store";
 import DestinatarioInput from "./DestinatarioInput";
 import ItemCard from "./ItemCard";
 import ItemForm from "./ItemForm";
-import { faGear } from "@fortawesome/free-solid-svg-icons";
+import { faGear, faList } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import ConfigModal from "./ConfigModal";
 
 function Sidebar() {
     const items = useAppStore((state) => state.orcamentoSimplesAtual?.items) ?? [];
+    const orcamentoAtual = useAppStore((state) => state.orcamentoSimplesAtual);
     const [configModal, setConfigModal] = useState(false)
+
+    const total = orcamentoAtual.items.reduce((soma, item) => soma + item.total, 0)
 
     return (
         <>
@@ -19,24 +22,45 @@ function Sidebar() {
                 {/* Header */}
                 <div className="p-2 bg-zinc-800 border-b flex flex-row justify-between items-center text-white text-center border-zinc-300 shadow w-full rounded-tl rounded-tr shrink-0">
 
-                    <span className="grow">
+                    <span className="ml-3">
                         Gerenciador de Orçamentos
                     </span>
 
-                    <button type="button">
-                        <FontAwesomeIcon
-                            onClick={() => setConfigModal(true)}
-                            className="rounded cursor-pointer p-1 hover:bg-white hover:text-zinc-800"
-                            icon={faGear}
-                        />
-                    </button>
+                    <div className="flex flex-row justify-center">
+                        <button type="button">
+                            <FontAwesomeIcon
+                                onClick={() => setConfigModal(true)}
+                                className="rounded cursor-pointer p-1 hover:bg-white hover:text-zinc-800"
+                                icon={faList}
+                            />
+                        </button>
+
+                        <button type="button">
+                            <FontAwesomeIcon
+                                onClick={() => setConfigModal(true)}
+                                className="rounded cursor-pointer p-1 hover:bg-white hover:text-zinc-800"
+                                icon={faGear}
+                            />
+                        </button>
+
+                    </div>
 
                 </div>
 
                 {/* Conteúdo */}
                 <div className="flex-1 min-h-0 flex flex-col px-3 py-1">
+                    <div className="flex flex-row items-baseline">
+                        <div className="grow">
+                            <DestinatarioInput />
+                        </div>
+                        <div>
 
-                    <DestinatarioInput />
+                            <div className="rounded bg-emerald-100 border border-emerald-200 font-bold text-emerald-700 px-3 py-1 ml-2">
+                                Total: R${total.toFixed(2)}
+                            </div>
+                        </div>
+                    </div>
+
 
                     {/* Itens */}
                     <div className="mt-5 flex-1 min-h-0 flex flex-col">
