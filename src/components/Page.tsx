@@ -24,7 +24,7 @@ function Page() {
             <Subtitle text='Orçamento' />
             <div className=' flex flex-col justify-between grow'>
                 <div className='flex flex-col justify-between grow'>
-                    <div className='py-6 px-10 '>
+                    <div className='py-6 px-10 grow'>
                         <div className='font-bold mb-2 text-lg'>
                             {config.prefixoDestinatario} {orcamentoAtual.destinatario.length === 0
                                 ? <span className='text-zinc-500'>Destinatário</span>
@@ -37,15 +37,18 @@ function Page() {
                         </div>
 
                     </div>
-
+                    {orcamentoAtual.observacoes.length > 0 && (
+                        <>
+                            <Subtitle text='Observações' />
+                            <div className='px-5 py-3'>
+                                {orcamentoAtual.observacoes}
+                            </div>
+                        </>
+                    )}
                     <div className='className="w-full my-4 border-t text-end text-zinc-900 text-lg border-zinc-500 border-b bg-zinc-200 px-10 py-0.5 font-bold'>
                         TOTAL: R${total.toFixed(2)}
                     </div>
                 </div>
-                {orcamentoAtual.observacoes.length > 0 && (
-                    <Subtitle text='Observações' />
-
-                )}
                 <div>
                     {/* <Subtitle text='Informações adicionais' /> */}
                     <div className='mt-5 pb-12 px-10 text-zinc-800'>
