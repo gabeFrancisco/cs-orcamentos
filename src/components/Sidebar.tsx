@@ -6,6 +6,7 @@ import ItemForm from "./ItemForm";
 import { faGear, faList } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import ConfigModal from "./ConfigModal";
+import ObservacoesInput from "./ObservacoesInput";
 
 function Sidebar() {
     const items = useAppStore((state) => state.orcamentoSimplesAtual?.items) ?? [];
@@ -42,9 +43,7 @@ function Sidebar() {
                                 icon={faGear}
                             />
                         </button>
-
                     </div>
-
                 </div>
 
                 {/* Conteúdo */}
@@ -64,14 +63,10 @@ function Sidebar() {
 
                     {/* Itens */}
                     <div className="mt-5 flex-1 min-h-0 flex flex-col">
-
                         <label className="form-label shrink-0">
                             Itens
                         </label>
-
                         <div className="form-section flex-1 min-h-0 flex flex-col">
-
-                            {/* Lista com scroll */}
                             <div className="flex-1 min-h-0 overflow-y-auto">
 
                                 {items.map((el, index) => (
@@ -95,27 +90,10 @@ function Sidebar() {
                             <div className="shrink-0">
                                 <ItemForm />
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
-                {/* Observações permanece visível */}
-                <div className="px-3 my-5 shrink-0">
-
-                    <label
-                        htmlFor="observacoes"
-                        className="txt-label"
-                    >
-                        Observações
-                    </label>
-
-                    <textarea className="txt-input" />
-
-                </div>
-
+                <ObservacoesInput />
             </div>
         </>
     );

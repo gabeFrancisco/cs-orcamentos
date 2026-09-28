@@ -42,7 +42,7 @@ function Page() {
                         TOTAL: R${total.toFixed(2)}
                     </div>
                 </div>
-                {orcamentoAtual.observacao.length > 0 && (
+                {orcamentoAtual.observacoes.length > 0 && (
                     <Subtitle text='Observações' />
 
                 )}

@@ -13,6 +13,7 @@ type Action = {
     addItem: (item: Item) => void
     removeItem: (index: number) => void,
     setDestinatario: (destinatario: string) => void,
+    setObservacoes: (observacoes: string) => void,
     setConfiguracoes: (config: Configuracoes) => void
 }
 
@@ -21,7 +22,7 @@ const useAppStore = create<State & Action>()((set) => ({
         destinatario: '',
         items: [],
         total: 0,
-        observacao: '',
+        observacoes: '',
         validade: 0,
         data: new Date(),
         local: '',
@@ -60,6 +61,14 @@ const useAppStore = create<State & Action>()((set) => ({
             orcamentoSimplesAtual: {
                 ...state.orcamentoSimplesAtual,
                 destinatario: destinatario
+            }
+        }
+    }),
+    setObservacoes: (observacoes) => set((state) => {
+        return {
+            orcamentoSimplesAtual: {
+                ...state.orcamentoSimplesAtual,
+                observacoes: observacoes
             }
         }
     }),
