@@ -2,17 +2,23 @@ import { useEffect, useState } from "react";
 import useAppStore from "../store/store";
 
 function DataInput() {
-    const dataAtual = new Date().toISOString().split('T')[0];
+    const hoje = new Date();
+
+    const dataAtual =
+        `${hoje.getFullYear()}-${String(hoje.getMonth() + 1).padStart(2, "0")}-${String(hoje.getDate()).padStart(2, "0")}`;
+
     const [data, setData] = useState(dataAtual)
     const setDataOrcamento = useAppStore((state) => state.setData);
 
     useEffect(() => {
-        setDataOrcamento(dataAtual);
+        setDataOrcamento(dataAtual)
     }, [])
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement, HTMLInputElement>) {
-        setData(event.target.value)
-        setDataOrcamento(data)
+        const novaData = event.target.value;
+
+        setData(novaData);
+        setDataOrcamento(novaData);
     }
 
     return (

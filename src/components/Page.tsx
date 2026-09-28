@@ -8,6 +8,12 @@ function Page() {
     const config = useAppStore((state) => state.configuracoes)
     const total = orcamentoAtual.items.reduce((soma, item) => soma + item.total, 0)
 
+    function formataData(data: string) {
+        const [ano, mes, dia] = data.split("-");
+
+        return `${dia}/${mes}/${ano}`;
+    }
+
     return (
         <div className="bg-white shadow-lg shadow-zinc-400 rounded page">
             <div className='flex flex-row p-10 justify-between w-full'>
@@ -53,7 +59,7 @@ function Page() {
                     {/* <Subtitle text='Informações adicionais' /> */}
                     <div className='mt-5 pb-12 px-10 text-zinc-800'>
                         <p className=''>Orçamento válido por {config.validadePadrao} dias!</p>
-                        <p className='italic font-bold'>Porto Alegre, {new Date(orcamentoAtual.data).toLocaleDateString("pt-BR")}</p>
+                        <p className='italic font-bold'>Porto Alegre, {formataData(orcamentoAtual.data)}</p>
                     </div>
                 </div>
             </div>
