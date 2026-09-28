@@ -48,7 +48,7 @@ function ItemForm() {
             </div>
 
 
-            <div className="mt-5 flex flex-row ">
+            <div className="mt-5 flex flex-row items-center">
                 <div>
                     <label htmlFor="quantidade" className="txt-label">Qte.</label>
                     <input style={formik.errors.quantidade && style} type="number" onChange={formik.handleChange} value={formik.values.quantidade} name="quantidade" className="txt-input" />
@@ -58,17 +58,17 @@ function ItemForm() {
                     <input style={formik.errors.preco && style} type="number" name="preco" onChange={formik.handleChange} value={formik.values.preco} className="txt-input" />
                 </div>
                 <div className="ml-3 flex-col w-1/2 items-center">
-                    <div className="text-emerald-600 border rounded border-emerald-600 flex flex-row items-center">
-                        <span className='font-bold p-1 text-white  bg-emerald-600'>Total: </span>
+                    <label className='txt-label'>Total</label>
+                    <div className="txt-input text-emerald-700 flex flex-row items-center">
                         <span className="mx-1">R$ </span>
                         <div className="">{total.toFixed(2)}</div>
                     </div>
                 </div>
+                <button type="submit" className="cursor-pointer ml-1 btn btn-primary">
+                    <FontAwesomeIcon icon={faPlus} /></button>
             </div>
 
-            <button type="submit" className="cursor-pointer mt-3 w-full btn btn-primary">
-                <FontAwesomeIcon icon={faPlus} />
-                Adicionar</button>
+
         </form>
     );
 }
