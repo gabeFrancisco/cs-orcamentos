@@ -13,7 +13,7 @@ function ObservacoesInput() {
     }, [valor])
 
     return (
-        <div className="px-3 my-5 shrink-0">
+        <div className="px-3 my-3 shrink-0">
 
             <label
                 htmlFor="observacoes"
@@ -22,7 +22,7 @@ function ObservacoesInput() {
                 Observações
             </label>
 
-            <textarea className="txt-input" value={valor} onChange={e => setValor(e.target.value)} />
+            <textarea className="txt-input" rows={3} value={valor} onChange={e => setValor(e.target.value)} />
 
         </div>
     );

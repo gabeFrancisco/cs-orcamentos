@@ -7,8 +7,21 @@
 
 body {
   margin: 0;
+  /* font-size: 15px; */
 }
 
+button {
+  cursor: pointer;
+}
+
+input {
+  font-size: 14px;
+}
+
+textarea {
+  resize: none;
+  line-height: 1.3rem;
+}
 
 .page {
   width: 210mm;
@@ -16,6 +29,14 @@ body {
   display: flex;
   flex-direction: column;
   /* transform: scale(0.5); */
+}
+
+.page table {
+  font-size: 1rem;
+}
+
+.page p {
+  font-size: 1rem;
 }
 
 /* width */
@@ -86,7 +107,7 @@ body {
   }
 
   .txt-input {
-    @apply shadow w-full px-1 py-1 transition-all bg-white border border-slate-300 rounded;
+    @apply shadow w-full px-1 py-1 transition-all bg-white border border-slate-300 rounded-sm;
   }
 
   .txt-label {

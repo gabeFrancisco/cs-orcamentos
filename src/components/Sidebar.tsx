@@ -4,31 +4,55 @@ import DestinatarioInput from "./DestinatarioInput";
 import ItemCard from "./ItemCard";
 import ItemForm from "./ItemForm";
 import { faFilePdf, faGear, faList, faPrint } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ConfigModal from "./ConfigModal";
 import ObservacoesInput from "./ObservacoesInput";
 import DataInput from "./DataInput";
 import ResponsavelInput from "./ResponsavelInput";
 import LocalInput from "./LocalInput";
+import { supabase } from "../lib/supabase";
+import LogoutModal from "./LogoutModal";
 
 function Sidebar() {
     const items = useAppStore((state) => state.orcamentoSimplesAtual?.items) ?? [];
     const orcamentoAtual = useAppStore((state) => state.orcamentoSimplesAtual);
     const [configModal, setConfigModal] = useState(false)
+    const [email, setEmail] = useState("");
+    const [logoutModal, setLogoutModal] = useState(false)
+
+    useEffect(() => {
+        async function getUser() {
+            const { data, error } = await supabase.auth.getSession();
+
+            if (error) {
+                console.log(error)
+                return;
+            }
+
+            setEmail(data.session.user.email)
+        }
+
+        getUser();
+    })
 
     const total = orcamentoAtual.items.reduce((soma, item) => soma + item.total, 0)
 
     return (
         <>
+            <LogoutModal open={logoutModal} onClose={() => setLogoutModal(false)} />
             <ConfigModal open={configModal} onClose={() => setConfigModal(false)} />
             <div className="lg:w-3/5 2xl:w-1/3 min-w-0 h-[calc(100dvh-1.5rem)] max-h-dvh flex m-3 flex-col bg-white text-zinc-700 rounded shadow-lg shadow-zinc-400">
 
                 {/* Header */}
                 <div className="p-2 bg-zinc-800 border-b flex flex-row justify-between items-center text-white text-center border-zinc-300 shadow w-full rounded-tl rounded-tr shrink-0">
-
-                    <span className="ml-3">
-                        Gerenciador de Orçamentos
-                    </span>
+                    <div>
+                        <span className="ml-3">
+                            {email}
+                        </span>
+                        <button type="button" onClick={() => setLogoutModal(true)} className="mx-2 text-sm text-red-300 hover:text-red-400">
+                            Sair
+                        </button>
+                    </div>
 
                     <div className="flex flex-row justify-center">
                         <button type="button">

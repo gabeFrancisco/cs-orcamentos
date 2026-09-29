@@ -48,7 +48,7 @@ function ItemForm() {
             </div>
 
 
-            <div className="mt-5 flex flex-row items-center">
+            <div className="mt-3 flex flex-row items-center">
                 <div>
                     <label htmlFor="quantidade" className="txt-label">Qte.</label>
                     <input style={formik.errors.quantidade && style} type="number" onChange={formik.handleChange} value={formik.values.quantidade} name="quantidade" className="txt-input" />

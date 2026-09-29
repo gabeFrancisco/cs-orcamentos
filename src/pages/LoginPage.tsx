@@ -8,16 +8,22 @@ import { useEffect, useState } from 'react';
 
 function LoginPage() {
     const navigate = useNavigate();
-    const setUser = useAppStore((state) => state.setUser)
-    const [errorState, setErrorState] = useState(false)
-    const [loading, setLoading] = useState(false)
+    const setUser = useAppStore((state) => state.setUser);
+
+    const [errorState, setErrorState] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        const user = supabase.auth.getSession().then((res) => res.data.session.user)
-        if (user) {
-            navigate("/")
+        async function checkSession() {
+            const { data } = await supabase.auth.getSession();
+
+            if (data.session) {
+                navigate("/");
+            }
         }
-    }, [])
+
+        checkSession();
+    }, [navigate]);
 
     const formik = useFormik({
         initialValues: {
@@ -33,6 +39,7 @@ function LoginPage() {
         onSubmit: async (values) => {
             setLoading(true)
             setErrorState(false)
+
             const { data, error } = await supabase.auth.signInWithPassword({
                 email: values.email,
                 password: values.senha
@@ -58,18 +65,18 @@ function LoginPage() {
                 <form className='w-4/5' onSubmit={formik.handleSubmit}>
                     <div>
                         <label htmlFor="email" className='txt-label'>Email</label>
-                        <input type="email" name='email' value={formik.values.email} onChange={formik.handleChange} id='email' className='txt-input' />
+                        <input type="email" name='email' value={formik.values.email} onChange={formik.handleChange} id='email' className='txt-input py-2' />
                         {formik.errors.email && <small className='text-red-500  '>{formik.errors.email}</small>}
                     </div>
                     <div className='mt-5'>
                         <label htmlFor="senha" className='txt-label'>Senha</label>
-                        <input type="password" name='senha' value={formik.values.senha} onChange={formik.handleChange} id='senha' className='txt-input' />
+                        <input type="password" name='senha' value={formik.values.senha} onChange={formik.handleChange} id='senha' className='txt-input py-2' />
                         {formik.errors.senha && <small className='text-red-500 w-1/2'>{formik.errors.senha}</small>}
                     </div>
-                    {errorState && <div className='px-3 py-1 mt-5 rounded border border-read-300 bg-red-100 text-red-500'>
+                    {errorState && <div className='px-3 py-1 mt-3 border-b border-read-300 text-red-500'>
                         Email ou senha inválidos!
                     </div>}
-                    <button type='submit' disabled={loading} className='btn btn-primary disabled:bg-zinc-400 disabled:texst-zinc-600 w-full mt-3 cursor-pointer'>{loading ? "Aguarde..." : "Entrar!"}</button>
+                    <button type='submit' disabled={loading} className='btn btn-primary disabled:bg-zinc-300 disabled:border-zinc-400 disabled:text-zinc-800     w-full mt-3 cursor-pointer'>{loading ? "Aguarde..." : "Entrar!"}</button>
                 </form>
             </div>
             <p className='text-slate-600'>Desenvolvido por Gabriel Francisco</p>
