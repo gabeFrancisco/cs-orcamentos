@@ -2,14 +2,17 @@ import { create } from 'zustand';
 import type { OrcamentoSimples } from '../models/OrcamentoSimples';
 import type { Item } from '../models/Item';
 import type { Configuracoes } from '../models/Configuracoes';
+import type { User } from '@supabase/supabase-js';
 
 type State = {
     orcamentoSimplesAtual: OrcamentoSimples | null,
     orcamentosSimples: OrcamentoSimples[],
-    configuracoes: Configuracoes
+    configuracoes: Configuracoes,
+    user: User | null
 }
 
 type Action = {
+    setUser: (user: User | null) => void,
     addItem: (item: Item) => void
     removeItem: (index: number) => void,
     setDestinatario: (destinatario: string) => void,
@@ -21,6 +24,7 @@ type Action = {
 }
 
 const useAppStore = create<State & Action>()((set) => ({
+    user: null,
     orcamentoSimplesAtual: {
         destinatario: '',
         items: [],
@@ -39,6 +43,7 @@ const useAppStore = create<State & Action>()((set) => ({
         localPadrao: "São Chico",
         responsavelPadrao: "Chico"
     },
+    setUser: (user) => set({ user }),
     addItem: (item) => set((state) => {
         // if (!state.orcamentoSimplesAtual) {
         //     return state;

@@ -4,13 +4,12 @@ import DestinatarioInput from "./DestinatarioInput";
 import ItemCard from "./ItemCard";
 import ItemForm from "./ItemForm";
 import { faFilePdf, faGear, faList, faPrint } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ConfigModal from "./ConfigModal";
 import ObservacoesInput from "./ObservacoesInput";
 import DataInput from "./DataInput";
 import ResponsavelInput from "./ResponsavelInput";
 import LocalInput from "./LocalInput";
-import { supabase } from "../lib/supabase";
 
 function Sidebar() {
     const items = useAppStore((state) => state.orcamentoSimplesAtual?.items) ?? [];
@@ -18,18 +17,6 @@ function Sidebar() {
     const [configModal, setConfigModal] = useState(false)
 
     const total = orcamentoAtual.items.reduce((soma, item) => soma + item.total, 0)
-
-    useEffect(() => {
-        async function test() {
-            const session = await supabase.auth.signInWithPassword({ email: "gabrielsfrancisco508@gmail.com", password: "s387126" })
-            const { data, error } = await supabase.auth.getSession();
-            console.log("Sessão:", data);
-            console.log("Erro:", error);
-        }
-
-        test()
-
-    }, [])
 
     return (
         <>
