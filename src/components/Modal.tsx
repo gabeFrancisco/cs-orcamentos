@@ -20,7 +20,7 @@ function Modal(props: ModalProps) {
                 <div className="flex flex-row justify-between text-lg font-bold text-zinc-700">
                     <span>{props.title}</span>
                     <button type="button" onClick={props.onClose}>
-                        <FontAwesomeIcon className="text-white bg-red-500 text-sm cursor-pointer rounded p-1" icon={faClose} />
+                        <FontAwesomeIcon className="text-white bg-red-500 text-sm hover:bg-red-700 cursor-pointer rounded p-1" icon={faClose} />
                     </button>
                 </div>
                 <hr className="text-zinc-300" />

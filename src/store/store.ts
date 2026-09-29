@@ -36,6 +36,8 @@ const useAppStore = create<State & Action>()((set) => ({
     configuracoes: {
         validadePadrao: 30,
         prefixoDestinatario: '',
+        localPadrao: "São Chico",
+        responsavelPadrao: "Chico"
     },
     addItem: (item) => set((state) => {
         // if (!state.orcamentoSimplesAtual) {

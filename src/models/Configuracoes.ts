@@ -1,4 +1,6 @@
 export interface Configuracoes {
     validadePadrao: number,
-    prefixoDestinatario: string
+    prefixoDestinatario: string,
+    localPadrao: string,
+    responsavelPadrao: string,
 }
