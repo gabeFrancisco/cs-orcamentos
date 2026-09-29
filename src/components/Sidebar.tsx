@@ -12,6 +12,7 @@ import ResponsavelInput from "./ResponsavelInput";
 import LocalInput from "./LocalInput";
 import { supabase } from "../lib/supabase";
 import LogoutModal from "./LogoutModal";
+import { formatarMoeda } from "../utils/utils";
 
 function Sidebar() {
     const items = useAppStore((state) => state.orcamentoSimplesAtual?.items) ?? [];
@@ -96,7 +97,7 @@ function Sidebar() {
                         <div>
 
                             <div className="rounded bg-emerald-100 border border-emerald-200 font-bold text-emerald-700 px-3 py-1 ml-2">
-                                Total: R${total.toFixed(2)}
+                                Total: {formatarMoeda(total)}
                             </div>
                         </div>
                     </div>

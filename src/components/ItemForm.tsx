@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useFormik } from 'formik'
 import * as Yup from 'yup';
+import { formatarMoeda } from '../utils/utils';
 
 function ItemForm() {
     const addItem = useAppStore((state) => state.addItem);
@@ -16,6 +17,8 @@ function ItemForm() {
             quantidade: 0,
             preco: 0
         },
+        validateOnChange: false,
+        validateOnBlur: false,
         validationSchema: Yup.object({
             nome: Yup.string().required("Nome é obrigatório"),
             quantidade: Yup.number().min(1).required("Quantidade é obrigatório!"),
@@ -37,7 +40,7 @@ function ItemForm() {
 
     const total = formik.values.quantidade * formik.values.preco;
     const style: React.CSSProperties = {
-        borderColor: '#fb2c36'
+        borderColor: '#fc4e68'
     }
 
     return (
@@ -60,8 +63,7 @@ function ItemForm() {
                 <div className="ml-3 flex-col w-1/2 items-center">
                     <label className='txt-label text-emerald-700'>Total</label>
                     <div className="txt-input text-emerald-700 flex flex-row items-center">
-                        <span className="mx-1">R$ </span>
-                        <div className="">{total.toFixed(2)}</div>
+                        <div className="">{formatarMoeda(total)}</div>
                     </div>
                 </div>
                 <button type="submit" className="cursor-pointer ml-1 btn btn-primary">

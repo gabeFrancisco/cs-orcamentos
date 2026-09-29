@@ -1,4 +1,5 @@
 import useAppStore from "../store/store";
+import { formatarMoeda } from "../utils/utils";
 
 function PageItensTable() {
     const items = useAppStore((state) => state.orcamentoSimplesAtual.items)
@@ -19,8 +20,8 @@ function PageItensTable() {
                         <th className="border-x border-zinc-500 text-zinc-800 px-1">{el.posicao}</th>
                         <td className="border-x border-zinc-500 px-1 wrap-break-word py-0.5">{el.nome}</td>
                         <td className="border-x border-zinc-500 px-1 py-0.5 text-center">{el.quantidade}</td>
-                        <td className="border-x border-zinc-500 px-1 py-0.5 text-center">R$ {el.preco.toFixed(2)}</td>
-                        <td className="border-x border-zinc-500 px-1 py-0.5 font-bold text-center">R$ {el.total.toFixed(2)}</td>
+                        <td className="border-x border-zinc-500 px-1 py-0.5 text-center">{formatarMoeda(el.preco)}</td>
+                        <td className="border-x border-zinc-500 px-1 py-0.5 font-bold text-center">{formatarMoeda(el.total)}</td>
                     </tr>
                 ))}
             </tbody>

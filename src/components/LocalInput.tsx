@@ -13,7 +13,7 @@ function LocalInput() {
         return () => clearInterval(timer)
     }, [valor])
 
-    useEffect(() => setValor(localStore))
+    useEffect(() => setValor(localStore), [])
 
     return (
         <div>

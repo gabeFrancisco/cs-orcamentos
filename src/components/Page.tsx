@@ -1,5 +1,6 @@
 import Logo from '../../public/logo.svg'
 import useAppStore from '../store/store';
+import { formatarMoeda } from '../utils/utils';
 import PageItensTable from './PageItensTable';
 import Subtitle from './Subtitle';
 
@@ -51,15 +52,21 @@ function Page() {
                             </div>
                         </>
                     )}
-                    <div className='className="w-full my-4 border-t text-end text-zinc-900 text-lg border-zinc-500 border-b bg-zinc-200 px-10 py-0.5 font-bold'>
-                        TOTAL: R${total.toFixed(2)}
+                    <div className='className="w-full my-4 border-t text-end text-zinc-900 text-xl border-zinc-500 border-b bg-zinc-200 px-10 py-0.5 font-bold'>
+                        TOTAL: {formatarMoeda(total)}
                     </div>
                 </div>
                 <div>
                     {/* <Subtitle text='Informações adicionais' /> */}
-                    <div className='mt-5 pb-12 px-10 text-zinc-800'>
+                    <div className='pb-10 px-10 text-zinc-800'>
                         <p className=''>Orçamento válido por {config.validadePadrao} dias!</p>
-                        <p className='italic font-bold'>Porto Alegre, {formataData(orcamentoAtual.data)}</p>
+                        <p className='font-bold'>{orcamentoAtual.local ?? ''}{orcamentoAtual.local && ", "} {formataData(orcamentoAtual.data)}</p>
+                        {orcamentoAtual.responsavel && (
+                            <div>
+                                <p className=''>Responsável Técnico: <b>{orcamentoAtual.responsavel}</b></p>
+                            </div>
+                        )}
+
                     </div>
                 </div>
             </div>
