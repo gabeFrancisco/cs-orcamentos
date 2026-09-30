@@ -4,7 +4,7 @@ import { formatarMoeda } from '../utils/utils';
 import PageItensTable from './PageItensTable';
 import Subtitle from './Subtitle';
 
-function Page({ contentRef }: { contentRef }) {
+function Page({ contentRef, showPage }: { contentRef, showPage: boolean }) {
     const orcamentoAtual = useAppStore((state) => state.orcamentoSimplesAtual)
     const config = useAppStore((state) => state.configuracoes)
     const total = orcamentoAtual.items.reduce((soma, item) => soma + item.total, 0)
@@ -16,7 +16,7 @@ function Page({ contentRef }: { contentRef }) {
     }
 
     return (
-        <div style={{ fontSize: "14px" }} className="bg-white shadow-lg shadow-zinc-400 rounded">
+        <div style={{ fontSize: "14px" }} className={`${showPage ? 'block lg:block' : 'hidden'} bg-white shadow-lg shadow-zinc-400 rounded`}>
             <div ref={contentRef} className='page'>
                 <div className='flex flex-row px-10 py-5 justify-between w-full'>
                     <img src={Logo} className='w-1/3 text-black' />

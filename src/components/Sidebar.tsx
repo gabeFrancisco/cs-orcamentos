@@ -14,7 +14,7 @@ import { supabase } from "../lib/supabase";
 import LogoutModal from "./LogoutModal";
 import { formatarMoeda } from "../utils/utils";
 
-function Sidebar({ printButtonRefFn }: { printButtonRefFn }) {
+function Sidebar({ printButtonRefFn, showPage }: { printButtonRefFn, showPage: boolean }) {
     const items = useAppStore((state) => state.orcamentoSimplesAtual?.items) ?? [];
     const orcamentoAtual = useAppStore((state) => state.orcamentoSimplesAtual);
     const [configModal, setConfigModal] = useState(false)
@@ -26,7 +26,6 @@ function Sidebar({ printButtonRefFn }: { printButtonRefFn }) {
             const { data, error } = await supabase.auth.getSession();
 
             if (error) {
-                // console.log(error)
                 return;
             }
 
@@ -42,7 +41,7 @@ function Sidebar({ printButtonRefFn }: { printButtonRefFn }) {
         <>
             <LogoutModal open={logoutModal} onClose={() => setLogoutModal(false)} />
             <ConfigModal open={configModal} onClose={() => setConfigModal(false)} />
-            <div className="lg:w-3/5 2xl:w-1/3 min-w-0 h-[calc(100dvh-1.5rem)] max-h-dvh flex m-3 flex-col bg-white text-zinc-700 rounded shadow-lg shadow-zinc-400">
+            <div className={`${showPage ? 'hidden lg:block' : 'block'} lg:w-3/5 2xl:w-1/3 min-w-0 h-[calc(100dvh-1.5rem)] max-h-dvh flex m-3 flex-col bg-white text-zinc-700 rounded shadow-lg shadow-zinc-400`}>
 
                 {/* Header */}
                 <div className="p-2 bg-zinc-800 border-b flex flex-row justify-between items-center text-white text-center border-zinc-300 shadow w-full rounded-tl rounded-tr shrink-0">
@@ -101,14 +100,14 @@ function Sidebar({ printButtonRefFn }: { printButtonRefFn }) {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-row items-baseline mt-4">
+                    <div className="flex flex-col gap-5 lg:gap-0 items-stretch lg:flex-row lg:items-baseline mt-4">
                         <div>
                             <DataInput />
                         </div>
-                        <div className="ml-2">
+                        <div className="lg:ml-2">
                             <LocalInput />
                         </div>
-                        <div className="ml-2">
+                        <div className="lg:ml-2">
                             <ResponsavelInput />
                         </div>
                     </div>
