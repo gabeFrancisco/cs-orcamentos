@@ -17,7 +17,7 @@ function ResponsavelInput() {
 
     return (
         <div className="w-full">
-            <label htmlFor="responsavel" className="txt-label">Responsável Técnico</label>
+            <label htmlFor="responsavel" className="txt-label">Responsável</label>
             <input name="responsavel" value={valor} onChange={e => setValor(e.target.value)} className="txt-input" />
         </div>
     );

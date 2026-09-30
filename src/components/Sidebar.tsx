@@ -100,14 +100,14 @@ function Sidebar({ printButtonRefFn, showPage }: { printButtonRefFn, showPage: b
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col gap-5 lg:gap-0 items-stretch lg:flex-row lg:items-baseline mt-4">
+                    <div className="flex flex-col flex-wrap lg:flex-nowrap  justify-center gap-y-3 md:gap-x-5 lg:gap-x-3 lg:gap-y-6 lg:gap-0 items-stretch md:flex-row lg:items-baseline mt-4">
                         <div>
                             <DataInput />
                         </div>
-                        <div className="lg:ml-2">
+                        <div className="">
                             <LocalInput />
                         </div>
-                        <div className="lg:ml-2">
+                        <div className="">
                             <ResponsavelInput />
                         </div>
                     </div>
