@@ -3,7 +3,7 @@ import useAppStore from "../store/store";
 import DestinatarioInput from "./DestinatarioInput";
 import ItemCard from "./ItemCard";
 import ItemForm from "./ItemForm";
-import { faFilePdf, faGear, faList, faPrint } from "@fortawesome/free-solid-svg-icons";
+import { faGear, faList, faPrint } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import ConfigModal from "./ConfigModal";
 import ObservacoesInput from "./ObservacoesInput";
@@ -14,7 +14,7 @@ import { supabase } from "../lib/supabase";
 import LogoutModal from "./LogoutModal";
 import { formatarMoeda } from "../utils/utils";
 
-function Sidebar() {
+function Sidebar({ printButtonRefFn }: { printButtonRefFn }) {
     const items = useAppStore((state) => state.orcamentoSimplesAtual?.items) ?? [];
     const orcamentoAtual = useAppStore((state) => state.orcamentoSimplesAtual);
     const [configModal, setConfigModal] = useState(false)
@@ -26,7 +26,7 @@ function Sidebar() {
             const { data, error } = await supabase.auth.getSession();
 
             if (error) {
-                console.log(error)
+                // console.log(error)
                 return;
             }
 
@@ -71,16 +71,16 @@ function Sidebar() {
                                 icon={faGear}
                             />
                         </button>
-                        <button type="button">
+                        {/* <button type="button">
                             <FontAwesomeIcon
                                 onClick={() => setConfigModal(true)}
                                 className="rounded cursor-pointer p-1 hover:bg-white hover:text-zinc-800"
                                 icon={faFilePdf}
                             />
-                        </button>
+                        </button> */}
                         <button type="button">
                             <FontAwesomeIcon
-                                onClick={() => setConfigModal(true)}
+                                onClick={printButtonRefFn}
                                 className="rounded cursor-pointer p-1 hover:bg-white hover:text-zinc-800"
                                 icon={faPrint}
                             />

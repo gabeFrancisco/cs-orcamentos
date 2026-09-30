@@ -31,12 +31,33 @@ textarea {
   /* transform: scale(0.5); */
 }
 
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
 .page table {
   font-size: 1rem;
 }
 
 .page p {
-  font-size: 1rem;
+  font-size: 0.9rem
 }
 
 /* width */
