@@ -19,7 +19,7 @@ function Page({ contentRef, showPage }: { contentRef, showPage: boolean }) {
         <div style={{ fontSize: "14px" }} className={`${showPage ? 'block lg:block' : 'hidden lg:block'} bg-white shadow-lg shadow-zinc-400 rounded`}>
             <div ref={contentRef} className='page'>
                 <div className='flex flex-row px-10 py-5 justify-between w-full'>
-                    <img src={Logo} className='w-1/3 text-black' />
+                    <img src={Logo} className='w-1/3 text-black object-contain' />
                     <div className='flex flex-col items-center text-sm'>
                         <p><b>Confiança - Qualidade - Garantia</b></p>
                         <p><i>www.chaveirosul.com.br</i></p>

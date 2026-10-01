@@ -3,7 +3,7 @@ import useAppStore from "../store/store";
 import DestinatarioInput from "./DestinatarioInput";
 import ItemCard from "./ItemCard";
 import ItemForm from "./ItemForm";
-import { faGear, faList, faPrint } from "@fortawesome/free-solid-svg-icons";
+import { faFilePdf, faGear, faList, faPrint } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import ConfigModal from "./ConfigModal";
 import ObservacoesInput from "./ObservacoesInput";
@@ -13,8 +13,9 @@ import LocalInput from "./LocalInput";
 import { supabase } from "../lib/supabase";
 import LogoutModal from "./LogoutModal";
 import { formatarMoeda } from "../utils/utils";
+import type { UseReactToPrintFn } from "react-to-print";
 
-function Sidebar({ printButtonRefFn, showPage }: { printButtonRefFn, showPage: boolean }) {
+function Sidebar({ printButtonRefFn, printButtonRefFnDownload, showPage }: { printButtonRefFn: UseReactToPrintFn, printButtonRefFnDownload: UseReactToPrintFn, showPage: boolean }) {
     const items = useAppStore((state) => state.orcamentoSimplesAtual?.items) ?? [];
     const orcamentoAtual = useAppStore((state) => state.orcamentoSimplesAtual);
     const [configModal, setConfigModal] = useState(false)
@@ -70,13 +71,13 @@ function Sidebar({ printButtonRefFn, showPage }: { printButtonRefFn, showPage: b
                                 icon={faGear}
                             />
                         </button>
-                        {/* <button type="button">
+                        <button type="button">
                             <FontAwesomeIcon
-                                onClick={() => setConfigModal(true)}
+                                onClick={printButtonRefFnDownload}
                                 className="rounded cursor-pointer p-1 hover:bg-white hover:text-zinc-800"
                                 icon={faFilePdf}
                             />
-                        </button> */}
+                        </button>
                         <button type="button">
                             <FontAwesomeIcon
                                 onClick={printButtonRefFn}
@@ -100,7 +101,7 @@ function Sidebar({ printButtonRefFn, showPage }: { printButtonRefFn, showPage: b
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col flex-wrap lg:flex-nowrap  justify-center gap-y-3 md:gap-x-5 lg:gap-x-3 lg:gap-y-6 lg:gap-0 items-stretch md:flex-row lg:items-baseline mt-4">
+                    <div className="flex flex-col flex-wrap lg:flex-nowrap  justify-center gap-y-5 md:gap-x-5 lg:gap-x-3 lg:gap-y-6 lg:gap-0 items-stretch md:flex-row lg:items-baseline mt-4">
                         <div>
                             <DataInput />
                         </div>
