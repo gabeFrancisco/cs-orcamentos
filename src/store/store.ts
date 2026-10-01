@@ -32,16 +32,16 @@ const useAppStore = create<State & Action>()((set) => ({
         observacoes: '',
         validade: 0,
         data: "",
-        local: 'São Francisco de Paula',
-        responsavel: 'Gabriel',
+        local: '',
+        responsavel: '',
 
     },
     orcamentosSimples: [],
     configuracoes: {
         validadePadrao: 30,
         prefixoDestinatario: '',
-        localPadrao: "São Chico",
-        responsavelPadrao: "Chico"
+        localPadrao: "Porto Alegre",
+        responsavelPadrao: "Leonardo"
     },
     setUser: (user) => set({ user }),
     addItem: (item) => set((state) => {

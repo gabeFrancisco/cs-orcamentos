@@ -3,7 +3,8 @@ import useAppStore from "../store/store";
 
 function LocalInput() {
     const setLocal = useAppStore((state) => state.setLocal)
-    const localStore = useAppStore((state) => state.orcamentoSimplesAtual.local)
+    const config = useAppStore((state) => state.configuracoes)
+
     const [valor, setValor] = useState("")
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -13,7 +14,7 @@ function LocalInput() {
         return () => clearInterval(timer)
     }, [valor])
 
-    useEffect(() => setValor(localStore), [])
+    useEffect(() => setValor(config.localPadrao), [])
 
     return (
         <div>

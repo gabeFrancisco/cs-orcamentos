@@ -3,7 +3,7 @@ import useAppStore from "../store/store";
 
 function ResponsavelInput() {
     const setResponsavel = useAppStore((state) => state.setResponsavel);
-    const responsavelStore = useAppStore((state) => state.orcamentoSimplesAtual.responsavel)
+    const config = useAppStore((state) => state.configuracoes)
     const [valor, setValor] = useState("")
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -13,7 +13,7 @@ function ResponsavelInput() {
         return () => clearTimeout(timer)
     }, [valor])
 
-    useEffect(() => setValor(responsavelStore), [])
+    useEffect(() => setValor(config.responsavelPadrao), [])
 
     return (
         <div className="w-full">

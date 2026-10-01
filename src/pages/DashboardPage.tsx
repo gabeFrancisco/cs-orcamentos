@@ -14,6 +14,7 @@ function DashboardPage() {
     const reactToPrintFnDownload = useReactToPrint(
         {
             contentRef,
+
             print: async (iframe) => {
                 const doc = iframe.contentDocument;
 
