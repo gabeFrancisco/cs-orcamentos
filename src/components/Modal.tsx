@@ -1,6 +1,5 @@
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect } from "react";
 
 interface ModalProps {
     title: string,
@@ -11,7 +10,7 @@ interface ModalProps {
 
 function Modal(props: ModalProps) {
     return (
-        <div className={`fixed flex flex-col justify-center items-center w-screen h-screen lg:p-0 transition-opacity duration-200  bg-zinc-300/80 z-40
+        <div className={`fixed flex flex-col justify-center items-center w-screen h-screen p-3 lg:p-0 transition-opacity duration-200  bg-zinc-300/80 z-40
             ${props.open ? "visible" : "hidden"}`}>
             <div className={`rounded border text-zinc-800 border-zinc-300 shadow z-50 w-full md:w-1/2 bg-white -mt-20 p-5
                 ${props.open
