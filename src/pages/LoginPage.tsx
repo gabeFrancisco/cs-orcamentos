@@ -57,7 +57,7 @@ function LoginPage() {
     })
     return (
         <div className="bg-zinc-300 w-screen h-screen p-5 flex flex-col items-center">
-            <div className="lg:m-10 m-20 bg-white flex flex-col items-center sm:w-full md:w-3/6 lg:w-2/6 p-6 text-zinc-700 rounded-lg border border-zinc-200 shadow">
+            <div className="m-3 lg:m-20 bg-white flex flex-col items-center w-full md:w-3/6 lg:w-2/6 p-6 text-zinc-700 rounded-lg border border-zinc-200 shadow">
                 <img src={Logo} alt="Logo" className='w-1/2' />
                 <h1 className='text-2xl font-bold mt-2 mb-5'>Login</h1>
                 <p className='mb-5 text-sm text-center'>Preencha seu email e senha para entrar no sistema de orçamentos!</p>
