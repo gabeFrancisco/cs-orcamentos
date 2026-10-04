@@ -96,7 +96,7 @@ function Sidebar({ printButtonRefFn, printButtonRefFnDownload, showPage }: { pri
                         </div>
                         <div>
 
-                            <div className="rounded bg-emerald-100 border border-emerald-200 font-bold text-emerald-700 px-3 py-1 ml-2">
+                            <div className="rounded bg-emerald-100 border border-emerald-200 text-emerald-700 px-3 py-0.5 ml-2">
                                 Total: {formatarMoeda(total)}
                             </div>
                         </div>
